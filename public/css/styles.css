@@ -1,0 +1,84 @@
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+.navbar-nav li a:hover {
+  color: #1abc9c !important;
+}
+
+.footer-padding {
+  padding-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #1abc9c;
+}
+
+.footer p {
+  margin-top: 25px;
+  font-size: 12px;
+  color: #fff;
+}
+
+body {
+  background-color: #051115;
+  color: #fff;
+}
+
+.form-control {
+  background-color: rgb(19, 177, 201);
+  color: rgb(6, 6, 6);
+}
+
+.compose-class .form-control::-webkit-input-placeholder {
+  color: rgb(95, 98, 95);
+}
+
+/* .btn {
+  padding: 15px 32px;
+  border: 50px;
+} */
+
+.compose-new {
+  margin-left: -30rem;
+  margin-top: -5rem;
+}
+
+.post-button {
+  margin-left: 100rem;
+  margin-top: 5rem;
+}
+
+.post-data {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 25px;
+}
+
+.post-title {
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(148, 120, 160);
+}
+
+/* .home-data {
+  font-family: "Times New Roman", Times, serif;
+} */
+/* P {
+  font-size: 20px;
+} */
+.home-content {
+  font-size: 20px;
+}
