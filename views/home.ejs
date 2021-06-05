@@ -7,12 +7,13 @@
             <button type="button" class="btn btn-success">Compose New Blog</button>
             </a>
         </div>
-
-    <% posts.forEach(function(post){ %>
+    <% posts.reverse().forEach(function(post){ %>
         <h1> <a href="/posts/<%= post._id %>"> <%= post.title %> </a></h1>
+        <p class="date-time"><%= post.datetime %> </p>
         <p class="home-content">
         <%= post.content.substring(0,100) + "..." %>
         <a href="/posts/<%=  post._id  %>">Read more</a>
+        <hr>
         </p>
     <% }) %>
 </div>

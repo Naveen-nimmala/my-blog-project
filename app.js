@@ -12,6 +12,10 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const app = express();
 
+// Time
+
+
+
 mongoose.connect('mongodb://localhost/blogDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -21,7 +25,8 @@ mongoose.connect('mongodb://localhost/blogDB', {
 
 const blogSchema = new mongoose.Schema({
   title: String,
-  content: String
+  content: String,
+  datetime: String
 });
 
 const Blog =  mongoose.model("Blog", blogSchema)
@@ -46,7 +51,8 @@ app.get('/', function (req, res){
     if (fountItems.length === 0){
         const defaultBlog = new Blog ({
           title: "Hello",
-          content: "world"
+          content: "world",
+          // datetime: dateTime
         });
        Blog.insertMany(defaultBlog, function(err){
        })  
@@ -73,9 +79,15 @@ app.get("/compose", function (req, res){
 
 
 app.post("/compose", function (req, res){
+  var date = new Date();
+  var n = date.toDateString();
+  var time = date.toLocaleTimeString();
+  dateTime = n + " " + time
+  
   const newPost = {
     title: req.body.postTitle,
-    content: req.body.postData
+    content: req.body.postData,
+    datetime: dateTime
   };
   Blog.insertMany(newPost, function(err){
   }) 
@@ -88,25 +100,18 @@ app.get("/posts/:postId", function(req, res){
 
   console.log(req.params.postId)
   Blog.findById(req.params.postId, function(err, existsID){
+    console.log(existsID.datetime)
     res.render("post", {
       title: existsID.title,
-      content: existsID.content
+      content: existsID.content,
+      datetime: existsID.datetime
     })
   });
 
 })
 
-
-
-var today = new Date();
-
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
-var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-
-var dateTime = date+' '+time;
-
-console.log(dateTime)
 app.listen(3000, function() {
   console.log("Server started on port 3000");
 });
+
+
