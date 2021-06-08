@@ -7,16 +7,31 @@
             <button type="button" class="btn btn-success">Compose New Blog</button>
             </a>
         </div>
-    <% posts.reverse().forEach(function(post){ %>
-        <h1> <a href="/posts/<%= post._id %>"> <%= post.title %> </a></h1>
-        <p class="date-time"><%= post.datetime %> </p>
-        <p class="home-content">
-        <%= post.content.substring(0,100) + "..." %>
-        <a href="/posts/<%=  post._id  %>">Read more</a>
-        <hr>
-        </p>
-    <% }) %>
+
+
+    <% var arry = [] %>
+    <% for (var i = posts.length - 1 ; i >= 0 ;i--){ %>
+            <h1> <a href="/posts/<%= posts[i]._id %>"> <%= posts[i].title %> </a></h1>
+            <p class="date-time"><%= posts[i].datetime %> </p> 
+            <div>
+                <p class= "home-content" id = "<%= i %>" >
+    
+                </p>
+                <hr>
+            </div>
+            <% arry.push(posts[i].content) %>
+            <script>
+                var $log = $( `#<%- i %>` ),
+                str = `<%- posts[i].content %>`,
+                html = $.parseHTML( str );               
+                $log.append(html);
+            </script>
+    <%}%>
+
+
+
 </div>
+
 <%- include('partials/footer'); -%>
 
 

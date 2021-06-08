@@ -1,7 +1,7 @@
 <%- include("partials/header"); -%>
     <h1>Compose</h1>
     <form action="/compose" method="post">
-        <div class="compose-class form-group">
+        <div class="compose-class">
             <label for="">Title</label>
             <input  class="form-control" type="text"  name="postTitle" placeholder="Blog Title" >
             <label for="">Post</label>
@@ -9,5 +9,6 @@
         </div>
         <button class="btn btn-primary" type="submit" name="button">Publish</button>
     </form>
+    <div id="newclass"><p>This is some sample content.</p></div>
     <script src="/css/test.js"></script>
 <%- include('partials/footer'); -%>

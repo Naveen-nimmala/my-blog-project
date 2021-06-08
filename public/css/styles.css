@@ -35,8 +35,8 @@
 }
 
 body {
-  background-color: #051115;
-  color: #fff;
+  background-color: #95a5ab;
+  color: rgb(29, 29, 33);
 }
 
 .form-control {
@@ -54,7 +54,7 @@ body {
 } */
 
 .compose-new {
-  margin-left: -30rem;
+  margin-left: -25rem;
   margin-top: -5rem;
 }
 
@@ -85,5 +85,15 @@ body {
 
 .date-time {
   font-size: 15px;
-  color: gray;
+  color: rgba(57, 53, 53, 0.51);
+}
+
+#newclass {
+  color: red;
+  background-color: black;
+}
+
+.ck-content {
+  width: 1140px;
+  height: 150px;
 }
