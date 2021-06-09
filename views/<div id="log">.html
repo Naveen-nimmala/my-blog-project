@@ -124,3 +124,22 @@ posts = [
     // newEle.innerHTML = doc.documentElement.textContent ;
     // new.appendChild(newEle)
     // $data.append(doc.documentElement.textContent);
+
+    ----------------
+    9 june
+
+
+    <div>
+        <p class= "home-content" id = "post-id" >
+    
+        </p>
+        <hr>
+    </div>
+
+
+    <script>
+        var $log = $( `#<%- i %>` ),
+        str = `<%- posts[i].content %>`,
+        html = $.parseHTML( str );               
+        $log.append(html);
+    </script>

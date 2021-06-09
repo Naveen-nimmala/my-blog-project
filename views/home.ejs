@@ -2,34 +2,27 @@
 <div class="home-data">
     <h1>Home</h1>
     <p><%= startContent %> </p>
-        <div class="compose-new">
-            <a href="/compose">
-            <button type="button" class="btn btn-success">Compose New Blog</button>
-            </a>
-        </div>
 
-
-    <% var arry = [] %>
     <% for (var i = posts.length - 1 ; i >= 0 ;i--){ %>
             <h1> <a href="/posts/<%= posts[i]._id %>"> <%= posts[i].title %> </a></h1>
             <p class="date-time"><%= posts[i].datetime %> </p> 
-            <div>
-                <p class= "home-content" id = "<%= i %>" >
-    
+            <div >
+                <p class= "home-content" id = "<%= i %>" > 
                 </p>
                 <hr>
             </div>
-            <% arry.push(posts[i].content) %>
+            
             <script>
+                var aTag = `<a href="/posts/<%=  posts[i]._id  %>">Read more</a>`
                 var $log = $( `#<%- i %>` ),
-                str = `<%- posts[i].content %>`,
-                html = $.parseHTML( str );               
+                str = `<%- posts[i].content.substring(0,100) + "..." %>` + aTag ,
+                html = $.parseHTML( str );  
                 $log.append(html);
-            </script>
+
+                
+            </script> 
     <%}%>
-
-
-
+    
 </div>
 
 <%- include('partials/footer'); -%>

@@ -1,14 +1,28 @@
 <%- include("partials/header"); -%>
-<dir class="post-data">
+<div class="post-data">
+
     <h1 class="post-title"> <%= title %> </h1>
     <p class="date-time"><%= datetime %> </p>
-    <p><%= content %> </p>
-</dir>
+    <p id = "content"> 
+    </p>
+</div>
 
+<script>
+    var $log = $( `#content` ),
+    str = `<%- content %>`  ,
+    html = $.parseHTML( str );  
+    $log.append(html);
+    
+</script> 
 
 <div class="post-button">
         <a href="/">
-        <button type="button" class="btn btn-success">Back</button>
-    </a>
+        <button type="button" class="btn btn-outline-dark">Back</button>
+</a>
 </div>
+<!-- <div class="top-button">
+    <a href="/">
+    <button type="button" class="btn btn-success">Back</button>
+</a>
+</div> -->
 <%- include('partials/footer'); -%>
