@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 var _ = require('lodash');
 const mongoose = require('mongoose');
-const { countBy } = require("lodash");
+// const { countBy } = require("lodash");
 
 
 const { JSDOM } = require( "jsdom" );
@@ -29,6 +29,7 @@ mongoose.connect('mongodb://localhost/blogDB', {
   useCreateIndex: true
 });
 
+
 const blogSchema = new mongoose.Schema({
   title: String,
   content: String,
@@ -36,6 +37,14 @@ const blogSchema = new mongoose.Schema({
 });
 
 const Blog =  mongoose.model("Blog", blogSchema)
+
+const userSchema = new mongoose.Schema({
+  userName: String,
+  emailID: String,
+  password: String
+})
+
+const User =  mongoose.model("User", userSchema);
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -109,19 +118,80 @@ app.post("/compose", function (req, res){
   res.redirect("/");
 });
 
+// app.get("/posts/:postId", function(req, res){
 
-app.get("/posts/:postId", function(req, res){
+//   Blog.findById(req.params.postId, function(err, existsID){
 
+//     res.render("post", {
+//       title: existsID.title,
+//       content: existsID.content,
+//       datetime: existsID.datetime
+//     })
+//   });
 
-  Blog.findById(req.params.postId, function(err, existsID){
-    res.render("post", {
-      title: existsID.title,
-      content: existsID.content,
-      datetime: existsID.datetime
-    })
+// })
+
+app.get("/posts/:postTitle", function(req, res){
+  const requestedTitle = _.lowerCase(req.params.postTitle)
+  Blog.find({}, function(err, existsID){
+    for (i = 0 ; i < existsID.length ; i++) {
+      
+      if (requestedTitle === _.lowerCase(existsID[i].title)){
+         return res.render("post", {
+          title: existsID[i].title,
+          content: existsID[i].content,
+          datetime: existsID[i].datetime
+        })
+      }
+    }
   });
 
 })
+
+app.get("/login", function(req, res){
+  res.render("login")
+})
+
+
+
+app.post("/login", function(req, res){
+  User.find({}, function(err, Users){
+    for (i=0;i<Users.length;i++){
+      if(req.body.email === Users[i].emailID && req.body.password === Users[i].password ){
+         res.redirect("/")
+      }else{
+        console.log("Login UnSuccess")
+      }
+    }
+  })
+})
+
+app.get("/signup", function(req, res){
+  
+  // const user = {
+  //   userName: req.body.postTitle,
+  //   emailID: req.body.postTitle,
+  //   password: req.body.postTitle
+  // };
+  return res.render("signup")
+
+
+})
+
+app.post("/signup", function (req, res){
+  
+  const newUser = {
+    userName: req.body.userName,
+    password: req.body.password,
+    emailID: req.body.email
+  };
+  console.log(req.body.userName,req.body.password, req.body.email)
+  User.insertMany(newUser, function(err){
+  }) 
+  // posts.push(post);
+  res.redirect("/");
+});
+
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");

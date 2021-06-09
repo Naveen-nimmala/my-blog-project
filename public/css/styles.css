@@ -57,6 +57,16 @@ body {
   background-color: rgba(255, 0, 255, 0.667);
 }
 
+.login-button {
+  padding: 15px 32px;
+  margin: -10px;
+  border: 100px;
+  box-sizing: border-box;
+  color: black;
+  background-color: rgba(0, 26, 255, 0.667);
+  margin: -150px auto;
+}
+
 /* .compose-new {
   margin-left: -25rem;
   margin-top: -5rem;
@@ -103,3 +113,5 @@ body {
   margin: auto 80% auto;
   width: 13%;
 }
+
+/* ################# */

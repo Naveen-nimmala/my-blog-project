@@ -143,3 +143,62 @@ posts = [
         html = $.parseHTML( str );               
         $log.append(html);
     </script>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Login</title>
+</head>
+<body>
+<div class="form">
+
+    <form action="/login" method="post">
+        <input type="text" name ="userName" placeholder=""/>
+        <input type="password" name="password" id="password" placeholder=""/>
+        <button>LOGIN</button>
+    </form>
+        <a href="/signup">
+            <button type="button" class="">SIGN UP</button>
+        </a>
+</div>
+</body>
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>SignUP</title>
+</head>
+<body>
+    <div class="form">
+        <form action="/signup" method="post">
+            <input name ="userName"  placeholder=""/>
+            <input type="password" name ="password"  id="password" placeholder=""/>
+            <button>SIGNUP</button>
+        </form>
+    </div>
+</body>
+</html>
+<body>
+</body>
+</html>
+

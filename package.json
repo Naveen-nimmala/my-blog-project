@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^28.0.0",
     "body-parser": "^1.19.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
